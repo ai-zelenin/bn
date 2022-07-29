@@ -1,0 +1,13 @@
+package {{.PackageName}}
+
+{{range  $index, $import := .Imports }}
+import "{{$import}}"
+{{end}}
+
+{{range  $index, $t := .Types }}
+// {{len $t.Fields}}
+type {{$t.Name}} struct {
+    {{range  $index, $field := $t.Fields}}{{$field.Name}} {{$field.Type}} {{$field.Tag}}
+    {{end}}
+}
+{{end}}

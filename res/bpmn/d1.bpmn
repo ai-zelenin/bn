@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1qb64jn"
+                  targetNamespace="https://www.omg.org/spec/BPMN/20100501/BPMN20.xsd" exporter="Camunda Modeler" exporterVersion="5.1.0"
+                  modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+    <bpmn:process id="Process_0zanfgk" name="Process_Name" isExecutable="true">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing>Flow_1399f87</bpmn:outgoing>
+        </bpmn:startEvent>
+
+        <bpmn:endEvent id="Event_0k55dfg">
+            <bpmn:incoming>Flow_1rxv7iu</bpmn:incoming>
+        </bpmn:endEvent>
+
+        <bpmn:sequenceFlow id="Flow_1399f87" sourceRef="StartEvent_1" targetRef="A1"/>
+        <bpmn:sequenceFlow id="Flow_1g3dgor" sourceRef="A1" targetRef="A2"/>
+
+        <bpmn:serviceTask id="A1" name="A1_name">
+            <bpmn:documentation>Doc A1</bpmn:documentation>
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="TaskDefinition" retries="1"/>
+                <zeebe:ioMapping>
+                    <zeebe:input source="= source" target="InputVariable_1"/>
+                    <zeebe:input source="= source" target="InputVariable_2"/>
+                    <zeebe:output source="= source" target="OutputVariable_2"/>
+                    <zeebe:output source="= source" target="OutputVariable_1"/>
+                </zeebe:ioMapping>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1399f87</bpmn:incoming>
+            <bpmn:outgoing>Flow_1g3dgor</bpmn:outgoing>
+        </bpmn:serviceTask>
+        <bpmn:sequenceFlow id="Flow_1rxv7iu" sourceRef="A2" targetRef="Event_0k55dfg"/>
+        <bpmn:scriptTask id="A2" name="A2_name">
+            <bpmn:documentation>Doc A2</bpmn:documentation>
+            <bpmn:extensionElements>
+                <zeebe:taskDefinition type="t1" retries="5"/>
+                <zeebe:ioMapping>
+                    <zeebe:input source="= source" target="i1"/>
+                    <zeebe:output source="= source" target="o1"/>
+                </zeebe:ioMapping>
+                <zeebe:taskHeaders>
+                    <zeebe:header key="k1" value="v1"/>
+                </zeebe:taskHeaders>
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1g3dgor</bpmn:incoming>
+            <bpmn:outgoing>Flow_1rxv7iu</bpmn:outgoing>
+        </bpmn:scriptTask>
+    </bpmn:process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+        <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0zanfgk">
+            <bpmndi:BPMNEdge id="Flow_1399f87_di" bpmnElement="Flow_1399f87">
+                <di:waypoint x="215" y="117"/>
+                <di:waypoint x="300" y="117"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="Flow_1g3dgor_di" bpmnElement="Flow_1g3dgor">
+                <di:waypoint x="400" y="117"/>
+                <di:waypoint x="470" y="117"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="Flow_1rxv7iu_di" bpmnElement="Flow_1rxv7iu">
+                <di:waypoint x="570" y="117"/>
+                <di:waypoint x="722" y="117"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+                <dc:Bounds x="179" y="99" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="Activity_19buc0r_di" bpmnElement="A1">
+                <dc:Bounds x="300" y="77" width="100" height="80"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="Event_0k55dfg_di" bpmnElement="Event_0k55dfg">
+                <dc:Bounds x="722" y="99" width="36" height="36"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="Activity_06hncti_di" bpmnElement="A2">
+                <dc:Bounds x="470" y="77" width="100" height="80"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>
