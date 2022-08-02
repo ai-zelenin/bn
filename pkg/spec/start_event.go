@@ -5,11 +5,15 @@ import "encoding/xml"
 type StartEvent struct {
 	XMLName           xml.Name             `xml:"startEvent"`
 	Text              string               `xml:",chardata"`
-	ID                string               `xml:"id,attr"`
+	Id                string               `xml:"id,attr"`
 	Name              string               `xml:"name,attr"`
-	Outgoing          string               `xml:"outgoing"`
+	Outgoing          []string             `xml:"outgoing"`
 	Documentation     string               `xml:"documentation"`
 	ExtensionElements StartEventExtensions `xml:"extensionElements"`
+}
+
+func (t *StartEvent) ID() string {
+	return t.Id
 }
 
 type StartEventExtensions struct {

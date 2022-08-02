@@ -3,14 +3,9 @@ package spec
 import "encoding/xml"
 
 type SendTask struct {
-	XMLName           xml.Name           `xml:"sendTask"`
-	Text              string             `xml:",chardata"`
-	ID                string             `xml:"id,attr"`
-	Name              string             `xml:"name,attr"`
-	Documentation     string             `xml:"documentation"`
+	XMLName xml.Name `xml:"sendTask"`
+	Task
 	ExtensionElements SendTaskExtensions `xml:"extensionElements"`
-	Incoming          string             `xml:"incoming"`
-	Outgoing          string             `xml:"outgoing"`
 }
 
 type SendTaskExtensions struct {

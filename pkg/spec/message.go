@@ -5,7 +5,7 @@ import "encoding/xml"
 type Message struct {
 	XMLName           xml.Name          `xml:"message"`
 	Text              string            `xml:",chardata"`
-	ID                string            `xml:"id,attr"`
+	Id                string            `xml:"id,attr"`
 	Name              string            `xml:"name,attr"`
 	ExtensionElements MessageExtensions `xml:"extensionElements"`
 }
@@ -19,6 +19,6 @@ type MessageExtensions struct {
 type MessageEventDefinition struct {
 	XMLName    xml.Name `xml:"messageEventDefinition"`
 	Text       string   `xml:",chardata"`
-	ID         string   `xml:"id,attr"`
+	Id         string   `xml:"id,attr"`
 	MessageRef string   `xml:"messageRef,attr"`
 }

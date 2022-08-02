@@ -5,7 +5,7 @@ import "encoding/xml"
 type BoundaryEvent struct {
 	XMLName                xml.Name                `xml:"boundaryEvent"`
 	Text                   string                  `xml:",chardata"`
-	ID                     string                  `xml:"id,attr"`
+	Id                     string                  `xml:"id,attr"`
 	Name                   string                  `xml:"name,attr"`
 	AttachedToRef          string                  `xml:"attachedToRef,attr"`
 	CancelActivity         string                  `xml:"cancelActivity,attr"`
@@ -14,6 +14,10 @@ type BoundaryEvent struct {
 	Outgoing               string                  `xml:"outgoing"`
 	ErrorEventDefinition   ErrorEventDefinition    `xml:"errorEventDefinition"`
 	MessageEventDefinition MessageEventDefinition  `xml:"messageEventDefinition"`
+}
+
+func (t *BoundaryEvent) ID() string {
+	return t.Id
 }
 
 type BoundaryEventExtensions struct {

@@ -2,8 +2,12 @@ package spec
 
 type TimerEventDefinition struct {
 	Text         string       `xml:",chardata"`
-	ID           string       `xml:"id,attr"`
+	Id           string       `xml:"id,attr"`
 	TimeDuration TimeDuration `xml:"timeDuration"`
+}
+
+func (t *TimerEventDefinition) ID() string {
+	return t.Id
 }
 
 type TimeDuration struct {

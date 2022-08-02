@@ -1,9 +1,7 @@
-package parser
+package model
 
 import (
-	"encoding/json"
 	"encoding/xml"
-	"fmt"
 	"github.com/ai.zelenin/bpmn/pkg/spec"
 	"io/ioutil"
 )
@@ -15,17 +13,15 @@ func NewParser() *Parser {
 	return &Parser{}
 }
 
-func (p *Parser) ParseFile(fn string) error {
+func (p *Parser) ParseFile(fn string) (*spec.Definitions, error) {
 	data, err := ioutil.ReadFile(fn)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	var defs = new(spec.Definitions)
 	err = xml.Unmarshal(data, defs)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	d, err := json.MarshalIndent(defs, "", "\t")
-	fmt.Println(string(d))
-	return nil
+	return defs, nil
 }

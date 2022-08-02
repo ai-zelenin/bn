@@ -3,15 +3,9 @@ package spec
 import "encoding/xml"
 
 type ReceiveTask struct {
-	XMLName           xml.Name              `xml:"receiveTask"`
-	Text              string                `xml:",chardata"`
-	ID                string                `xml:"id,attr"`
-	Name              string                `xml:"name,attr"`
-	MessageRef        string                `xml:"messageRef,attr"`
-	Documentation     string                `xml:"documentation"`
+	XMLName xml.Name `xml:"receiveTask"`
+	Task
 	ExtensionElements ReceiveTaskExtensions `xml:"extensionElements"`
-	Incoming          string                `xml:"incoming"`
-	Outgoing          string                `xml:"outgoing"`
 }
 
 type ReceiveTaskExtensions struct {

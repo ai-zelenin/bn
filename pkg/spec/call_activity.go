@@ -3,14 +3,9 @@ package spec
 import "encoding/xml"
 
 type CallActivity struct {
-	XMLName           xml.Name               `xml:"callActivity"`
-	Text              string                 `xml:",chardata"`
-	ID                string                 `xml:"id,attr"`
-	Name              string                 `xml:"name,attr"`
-	Documentation     string                 `xml:"documentation"`
+	XMLName xml.Name `xml:"callActivity"`
+	Task
 	ExtensionElements CallActivityExtensions `xml:"extensionElements"`
-	Incoming          string                 `xml:"incoming"`
-	Outgoing          string                 `xml:"outgoing"`
 }
 
 type CallActivityExtensions struct {

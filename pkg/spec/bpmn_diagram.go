@@ -5,14 +5,14 @@ import "encoding/xml"
 type BPMNDiagram struct {
 	XMLName   xml.Name `xml:"BPMNDiagram"`
 	Text      string   `xml:",chardata"`
-	ID        string   `xml:"id,attr"`
+	Id        string   `xml:"id,attr"`
 	BPMNPlane struct {
 		Text        string `xml:",chardata"`
-		ID          string `xml:"id,attr"`
+		Id          string `xml:"id,attr"`
 		BpmnElement string `xml:"bpmnElement,attr"`
 		BPMNShape   []struct {
 			Text            string `xml:",chardata"`
-			ID              string `xml:"id,attr"`
+			Id              string `xml:"id,attr"`
 			BpmnElement     string `xml:"bpmnElement,attr"`
 			IsHorizontal    string `xml:"isHorizontal,attr"`
 			IsMarkerVisible string `xml:"isMarkerVisible,attr"`
@@ -37,7 +37,7 @@ type BPMNDiagram struct {
 		} `xml:"BPMNShape"`
 		BPMNEdge []struct {
 			Text        string `xml:",chardata"`
-			ID          string `xml:"id,attr"`
+			Id          string `xml:"id,attr"`
 			BpmnElement string `xml:"bpmnElement,attr"`
 			Waypoint    []struct {
 				Text string `xml:",chardata"`

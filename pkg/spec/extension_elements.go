@@ -26,7 +26,7 @@ type Subscription struct {
 type UserTaskForm struct {
 	XMLName xml.Name `xml:"userTaskForm"`
 	Text    string   `xml:",chardata"`
-	ID      string   `xml:"id,attr"`
+	Id      string   `xml:"id,attr"`
 }
 
 type IoMapping struct {
