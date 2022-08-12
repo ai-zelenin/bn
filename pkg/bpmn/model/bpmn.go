@@ -1,7 +1,8 @@
 package model
 
 import (
-	"github.com/ai.zelenin/bpmn/pkg/spec"
+	"context"
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/spec"
 )
 
 type BPMN struct {
@@ -23,4 +24,12 @@ func NewBPMN(definitions *spec.Definitions) (*BPMN, error) {
 		Spec:      definitions,
 		Processes: processDefinitions,
 	}, nil
+}
+
+func (b *BPMN) LoadExecutableModel(ctx context.Context, processID string) (Executable, error) {
+	p, ok := b.Processes[processID]
+	if !ok {
+		return nil, ErrProcessIDNotFound
+	}
+	return NewExecutableProcess(p.StartEvent, p.CreateIndex()), nil
 }

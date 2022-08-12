@@ -7,14 +7,18 @@ import (
 type ProcessInstanceState string
 
 const (
-	ProcessInstanceREADY ProcessInstanceState = "READY"
+	ProcessInstanceREADY    ProcessInstanceState = "READY"
+	ProcessInstanceACTIVE   ProcessInstanceState = "ACTIVE"
+	ProcessInstanceINCIDENT ProcessInstanceState = "INCIDENT"
+	ProcessInstanceDONE     ProcessInstanceState = "DONE"
 )
 
 type ProcessInstance struct {
-	ID                  string
-	Name                string
-	ProcessDefinitionID string
-	State               ProcessInstanceState
-	CreatedAt           time.Time
-	Execution           *Execution
+	ID        string
+	Name      string
+	ProcessID string
+	StartID   string
+	CurrentID string
+	State     ProcessInstanceState
+	CreatedAt time.Time
 }

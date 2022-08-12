@@ -1,9 +1,12 @@
 package engine
 
-import "github.com/ai.zelenin/bpmn/pkg/model"
+import (
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/model"
+)
 
 type Execution struct {
 	ID                string
-	ProcessDefinition *model.Process
-	Storage           TransactionalStorage
+	ProcessInstanceID string
+	model.Executable
+	Storage TransactionalStorage
 }

@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/xml"
-	"github.com/ai.zelenin/bpmn/pkg/spec"
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/spec"
 	"io/ioutil"
 )
 

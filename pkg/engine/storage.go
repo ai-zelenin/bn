@@ -2,7 +2,7 @@ package engine
 
 import (
 	"context"
-	"github.com/ai.zelenin/bpmn/pkg/model"
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/model"
 )
 
 type StorageFactory interface {
@@ -32,7 +32,7 @@ type TransactionalStorage interface {
 
 type Storage interface {
 	ProcessInstanceStorage
-	Scope
+	ScopeStorage
 }
 
 type ProcessInstanceStorage interface {
@@ -40,13 +40,13 @@ type ProcessInstanceStorage interface {
 	LoadProcessInstance(ctx context.Context, id string) (*ProcessInstance, error)
 }
 
-type Scope interface {
-	Store(ctx context.Context, key string, val any) error
-	Load(ctx context.Context, key string) (val any, err error)
+type ScopeStorage interface {
+	Store(ctx context.Context, variables ...*Variable) error
+	Load(ctx context.Context, keys ...string) (vars Variables, err error)
 }
 
 type BPMNStorage interface {
 	StoreBPMN(ctx context.Context, id string, bpmn *model.BPMN) error
 	LoadBPMN(ctx context.Context, id string) (*model.BPMN, error)
-	LoadProcessDefinition(ctx context.Context, id string) (*model.Process, error)
+	FindByProcessID(ctx context.Context, processID string) (*model.BPMN, error)
 }

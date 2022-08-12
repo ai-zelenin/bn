@@ -1,27 +1,27 @@
 package model
 
 import (
-	"github.com/ai.zelenin/bpmn/pkg/spec"
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/spec"
 )
 
 type StartEvent struct {
 	Spec *spec.StartEvent
 }
 
-func NewStartEvent(def *spec.StartEvent) (*StartEvent, error) {
+func NewStartEvent(def *spec.StartEvent) *StartEvent {
 	return &StartEvent{
 		Spec: def,
-	}, nil
+	}
 }
 
 func (s *StartEvent) ID() string {
 	return s.Spec.ID()
 }
 
-func (s *StartEvent) Outgoing() []string {
+func (s *StartEvent) OutRef() []string {
 	return s.Spec.Outgoing
 }
 
-func (s *StartEvent) Incoming() []string {
+func (s *StartEvent) InRef() []string {
 	return nil
 }

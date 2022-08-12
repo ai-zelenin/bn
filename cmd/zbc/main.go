@@ -56,18 +56,8 @@ func main() {
 	}
 	fmt.Println(deployResponse.String())
 
-	processID := "Process_006dc9b"
-	variables := make(map[string]interface{})
-	variables["orderId"] = "31243"
-	request, err := client.NewCreateInstanceCommand().BPMNProcessId(processID).LatestVersion().VariablesFromMap(variables)
-	if err != nil {
-		panic(err)
-	}
-	msg, err := request.Send(ctx)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(msg.String())
+	//processID := "Process_1"
+	//ExecProcess(client, processID, 1)
 
 	jobWorker := client.NewJobWorker().JobType("T1").Handler(handleJob).Open()
 
@@ -88,10 +78,10 @@ func roleToString(role pb.Partition_PartitionBrokerRole) string {
 	}
 }
 
-func ExecProcess(client zbc.Client, i int) {
+func ExecProcess(client zbc.Client, processID string, i int) {
 	variables := make(map[string]interface{})
 	variables["orderId"] = i
-	request, err := client.NewCreateInstanceCommand().BPMNProcessId("Process_0pc0yio").LatestVersion().VariablesFromMap(variables)
+	request, err := client.NewCreateInstanceCommand().BPMNProcessId(processID).LatestVersion().VariablesFromMap(variables)
 	if err != nil {
 		panic(err)
 	}

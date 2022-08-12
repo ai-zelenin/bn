@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"github.com/ai.zelenin/bpmn/pkg/model"
+	"github.com/ai.zelenin/bpmn/pkg/bpmn/model"
 	"sync"
 )
 
